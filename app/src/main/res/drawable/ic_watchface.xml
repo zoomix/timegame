@@ -1,0 +1,27 @@
+<vector android:autoMirrored="true" android:height="300dp"
+    android:viewportHeight="300" android:viewportWidth="300"
+    android:width="300dp" xmlns:android="http://schemas.android.com/apk/res/android">
+    <group>
+        <clip-path android:pathData="M0,0h300v300h-300z M 0,0"/>
+        <path android:fillColor="#EBEBEB" android:pathData=" M 17 150 C 17 76.595 76.595 17 150 17 C 223.405 17 283 76.595 283 150 C 283 223.405 223.405 283 150 283 C 76.595 283 17 223.405 17 150 Z "/>
+        <path android:fillColor="#FF000000"
+            android:pathData="M150.0,17.0L150.0,48.0"
+            android:strokeColor="#000000" android:strokeLineCap="square"
+            android:strokeLineJoin="miter" android:strokeWidth="1"/>
+        <path android:fillColor="#FF000000"
+            android:pathData="M150.0,252.0L150.0,283.0"
+            android:strokeColor="#000000" android:strokeLineCap="square"
+            android:strokeLineJoin="miter" android:strokeWidth="1"/>
+        <path android:fillColor="#FF000000" android:pathData="M17.0,150.0L53.0,150.0"/>
+        <path android:fillColor="#FF000000" android:pathData="M283.0,150.0L245.0,150.0"/>
+        <path android:fillColor="#FF000000"
+            android:pathData="M17.0,150.0L53.0,150.0"
+            android:strokeColor="#000000" android:strokeLineCap="square"
+            android:strokeLineJoin="miter" android:strokeWidth="1"/>
+        <path android:fillColor="#FF000000" android:pathData="M283.0,150.0L245.0,150.0"/>
+        <path android:fillColor="#FF000000"
+            android:pathData="M283.0,150.0L245.0,150.0"
+            android:strokeColor="#000000" android:strokeLineCap="square"
+            android:strokeLineJoin="miter" android:strokeWidth="1"/>
+    </group>
+</vector>
