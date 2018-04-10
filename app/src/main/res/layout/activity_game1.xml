@@ -35,6 +35,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <include
+        android:id="@+id/game_answers"
         layout="@layout/fragment_answers"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
