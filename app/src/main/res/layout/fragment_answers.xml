@@ -18,4 +18,11 @@
         layout="@layout/fragment_answer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/accept"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="doAcceptAnswer"
+        android:text="Accept" />
 </LinearLayout>
