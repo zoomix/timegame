@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
@@ -39,21 +40,49 @@ public class Game1Activity extends Activity {
 
     public void doAcceptAnswer(View view) {
         Log.d(TAG, "doAcceptAnswer: ");
+        int checkedIndex = getCheckedIndex();
+        if (checkedIndex == -1) {
+            Toast.makeText(this, "Du valde inget alternativ", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         gameMode = GameMode.PAUSED;
-        AlertDialog gameDone = new AlertDialog.Builder(this).setTitle("Grattis")
-                                                            .setMessage("Du har klickat på en knapp. Woow")
-                                                            .create();
+        AlertDialog gameDone;
+
+        if (answers.get(checkedIndex).equals(correctAnswer)) {
+            gameDone = new AlertDialog.Builder(this)
+                                      .setTitle("Grattis")
+                                      .setMessage("Du hade rätt. Woow.")
+                                      .create();
+        } else {
+            gameDone = new AlertDialog.Builder(this)
+                                      .setTitle("Ajdå")
+                                      .setMessage("Det här gick la sådär, eller?")
+                                      .create();
+        }
+
         gameDone.show();
         gameMode = GameMode.FINISHED;
     }
 
 
 
+    private int getCheckedIndex() {
+        LinearLayout answersLayout = findViewById(R.id.game_answers);
+        for(int i=0; i<answers.size(); i++) {
+            CheckBox checkBox = answersLayout.getChildAt(i).findViewById(R.id.checkBox);
+            if (checkBox.isChecked()) {
+                return i;
+            }
+        }
+        Log.d(TAG, "getCheckedIndex: Hittade inget som var ibockat.");
+        return -1;
+    }
+
     private void doSetupGame() {
         answers.clear();
         correctAnswer = new Answer( Math.round(Math.random() * 12), 0);
         answers.add(correctAnswer);
-
         while (answers.size() < 3) {
             Answer alternativeAnswer = new Answer(Math.round(Math.random() * 12), 0);
             if ( !answers.contains(alternativeAnswer) ) {
@@ -73,7 +102,21 @@ public class Game1Activity extends Activity {
             ConstraintLayout answerLayout = (ConstraintLayout) answersLayout.getChildAt(i);
             CheckBox checkbox = answerLayout.findViewById(R.id.checkBox);
             checkbox.setText(answers.get(i).toString());
+            checkbox.setOnCheckedChangeListener( (compoundButton, checked) -> {
+                if (checked) {
+                    uncheckAllApartFrom(compoundButton);
+                }
+            });
         }
     }
 
+    private void uncheckAllApartFrom(CompoundButton compoundButton) {
+        LinearLayout answersLayout = findViewById(R.id.game_answers);
+        for(int i=0; i<answers.size(); i++) {
+            CheckBox checkBox = answersLayout.getChildAt(i).findViewById(R.id.checkBox);
+            if (!checkBox.equals(compoundButton)) {
+                checkBox.setChecked(false);
+            }
+        }
+    }
 }
