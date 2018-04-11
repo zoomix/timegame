@@ -1,6 +1,7 @@
 package se.kvrgic.timegame;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -15,6 +16,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import se.kvrgic.timegame.data.Answer;
+import se.kvrgic.timegame.data.GameMode;
 
 public class Game1Activity extends Activity {
 
@@ -22,14 +24,14 @@ public class Game1Activity extends Activity {
 
     public static List<Answer> answers = new LinkedList<>();
     public static Answer correctAnswer = null;
-    public static boolean isGameRunning = false;
+    public static GameMode gameMode = GameMode.FINISHED;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game1);
 
-        if(!isGameRunning) {
+        if(gameMode.equals(GameMode.FINISHED)) {
             doSetupGame();
         }
         doDrawGame();
@@ -37,7 +39,12 @@ public class Game1Activity extends Activity {
 
     public void doAcceptAnswer(View view) {
         Log.d(TAG, "doAcceptAnswer: ");
-        isGameRunning = false;
+        gameMode = GameMode.PAUSED;
+        AlertDialog gameDone = new AlertDialog.Builder(this).setTitle("Grattis")
+                                                            .setMessage("Du har klickat på en knapp. Woow")
+                                                            .create();
+        gameDone.show();
+        gameMode = GameMode.FINISHED;
     }
 
 
@@ -54,7 +61,7 @@ public class Game1Activity extends Activity {
             }
         }
         Collections.shuffle(answers);
-        isGameRunning = true;
+        gameMode = GameMode.RUNNING;
     }
 
     private void doDrawGame() {
