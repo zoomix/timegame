@@ -8,24 +8,35 @@
 
     <CheckBox
         android:id="@+id/checkBox"
+        style="@style/Widget.AppCompat.CompoundButton.CheckBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="4dp"
+        android:background="@drawable/answer_border"
+        android:fontFamily="monospace"
+        android:paddingBottom="8dp"
+        android:paddingTop="8dp"
         android:text="08:00"
-        app:layout_constraintEnd_toStartOf="@+id/imageView"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toStartOf="@+id/playButton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/ic_media_play" />
+    <Button
+        android:id="@+id/playButton"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="50dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="24dp"
+        android:adjustViewBounds="true"
+        android:padding="0dp"
+        android:text="@string/play_button"
+        android:textColor="@android:color/holo_green_dark"
+        android:textSize="40sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/checkBox"
+        app:layout_constraintEnd_toEndOf="parent" />
+
 
 </android.support.constraint.ConstraintLayout>
