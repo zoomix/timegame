@@ -11,7 +11,9 @@ public class Answer {
     }
 
     public String toString() {
-        return hour + ":" + minute;
+        String hourStr = (hour == 0) ? "12" : String.format("%02d", hour);
+        String minuteStr = String.format("%02d", minute);
+        return hourStr + ":" + minuteStr;
     }
 
     public float getHourAngle() {
