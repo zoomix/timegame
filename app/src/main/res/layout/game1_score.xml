@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/duck"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="🦆"
+            android:textAlignment="center"
+            android:textSize="46sp"
+            app:layout_constraintEnd_toStartOf="@+id/cat"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/cat"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="🐱"
+            android:textAlignment="center"
+            android:textSize="46sp"
+            app:layout_constraintEnd_toStartOf="@+id/banana"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/duck"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/banana"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="🍌"
+            android:textAlignment="center"
+            android:textSize="46sp"
+            app:layout_constraintEnd_toStartOf="@+id/cow"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/cat"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/cow"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="🐮"
+            android:textAlignment="center"
+            android:textSize="46sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/banana"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/incorrect"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="💩😔"
+            android:textAlignment="center"
+            android:textSize="80dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cat" />
+
+        <TextView
+            android:id="@+id/correct"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="🎉👍"
+            android:textAlignment="center"
+            android:textSize="80dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cat" />
+
+        <TextView
+            android:id="@+id/duckOk"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="✔️"
+            app:layout_constraintStart_toStartOf="@+id/duck"
+            app:layout_constraintTop_toTopOf="@+id/duck" />
+
+        <TextView
+            android:id="@+id/duckFail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="🚫"
+            app:layout_constraintStart_toStartOf="@+id/duck"
+            app:layout_constraintTop_toTopOf="@+id/duck" />
+
+        <TextView
+            android:id="@+id/catOk"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="✔️"
+            app:layout_constraintStart_toStartOf="@+id/cat"
+            app:layout_constraintTop_toTopOf="@+id/cat" />
+
+        <TextView
+            android:id="@+id/catFail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="🚫"
+            app:layout_constraintStart_toStartOf="@+id/cat"
+            app:layout_constraintTop_toTopOf="@+id/cat" />
+
+        <TextView
+            android:id="@+id/bananaOk"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="✔️"
+            app:layout_constraintStart_toStartOf="@+id/banana"
+            app:layout_constraintTop_toTopOf="@+id/banana" />
+
+        <TextView
+            android:id="@+id/bananaFail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="🚫"
+            app:layout_constraintStart_toStartOf="@+id/banana"
+            app:layout_constraintTop_toTopOf="@+id/banana" />
+
+        <TextView
+            android:id="@+id/cowOk"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="✔️"
+            app:layout_constraintStart_toStartOf="@+id/cow"
+            app:layout_constraintTop_toTopOf="@+id/cow" />
+
+        <TextView
+            android:id="@+id/cowFail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="🚫"
+            app:layout_constraintStart_toStartOf="@+id/cow"
+            app:layout_constraintTop_toTopOf="@+id/cow" />
+</android.support.constraint.ConstraintLayout>
+

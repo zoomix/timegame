@@ -51,8 +51,7 @@ public class Game1Activity extends Activity {
 
         if (answers.get(checkedIndex).equals(correctAnswer)) {
             gameDone = new AlertDialog.Builder(this)
-                                      .setTitle("Grattis")
-                                      .setMessage("Du hade rätt. Woow.")
+                                      .setView(View.inflate(this, R.layout.game1_score, null))
                                       .create();
         } else {
             gameDone = new AlertDialog.Builder(this)
