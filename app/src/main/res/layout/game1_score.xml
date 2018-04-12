@@ -98,6 +98,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
+            android:tag="succesOrFail"
             android:text="✔️"
             app:layout_constraintStart_toStartOf="@+id/duck"
             app:layout_constraintTop_toTopOf="@+id/duck" />
