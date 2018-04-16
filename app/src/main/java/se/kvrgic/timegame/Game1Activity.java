@@ -2,6 +2,7 @@ package se.kvrgic.timegame;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -26,7 +27,7 @@ public class Game1Activity extends Activity {
     public static final String TAG = "Game1Activity";
 
     public static GameMode gameMode = GameMode.FINISHED;
-    public static GameState gameState;
+    public static GameState gameState = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,11 +56,24 @@ public class Game1Activity extends Activity {
         AlertDialog gameDone;
         gameDone = new AlertDialog.Builder(this)
                                   .setView(getGameScore())
+                                  .setCancelable(false)
+                                  .setPositiveButton("Win", (dialogInterface, i) -> { doAnswerAccepted(); })
                                   .create();
         gameDone.show();
         gameMode = GameMode.FINISHED;
     }
 
+    private void doAnswerAccepted() {
+        Log.d(TAG, "doAcceptAnswer: Nu vann vi höddu");
+        if(gameState.rounds.size() >= 4) {
+            Intent menuActivityIntent = new Intent(this, MenuActivity.class);
+            menuActivityIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(menuActivityIntent);
+        } else {
+            doSetupGame();
+            doDrawGame();
+        }
+    }
 
 
     private int getCheckedIndex() {
@@ -75,7 +89,9 @@ public class Game1Activity extends Activity {
     }
 
     private void doSetupGame() {
-        gameState = new GameState();
+        if (gameState == null) {
+            gameState = new GameState();
+        }
         gameState.answers.clear();
         gameState.correctAnswer = new Answer( Math.round(Math.random() * 12), 0);
         gameState.answers.add(gameState.correctAnswer);
@@ -86,6 +102,7 @@ public class Game1Activity extends Activity {
             }
         }
         Collections.shuffle(gameState.answers);
+        uncheckAllApartFrom(null);
         gameMode = GameMode.RUNNING;
     }
 
