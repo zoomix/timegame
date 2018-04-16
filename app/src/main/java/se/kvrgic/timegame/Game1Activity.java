@@ -19,15 +19,14 @@ import java.util.List;
 
 import se.kvrgic.timegame.data.Answer;
 import se.kvrgic.timegame.data.GameMode;
+import se.kvrgic.timegame.data.GameState;
 
 public class Game1Activity extends Activity {
 
     public static final String TAG = "Game1Activity";
 
-    public static List<Answer> answers = new LinkedList<>();
-    public static Answer correctAnswer = null;
     public static GameMode gameMode = GameMode.FINISHED;
-    public static int finishedRounds = 0;
+    public static GameState gameState;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,17 +43,19 @@ public class Game1Activity extends Activity {
         Log.d(TAG, "doAcceptAnswer: ");
         int checkedIndex = getCheckedIndex();
         if (checkedIndex == -1) {
-            Toast.makeText(this, "Du valde inget alternativ", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Du  valde inget alternativ", Toast.LENGTH_SHORT).show();
             return;
         }
 
         gameMode = GameMode.PAUSED;
+
+        boolean isWon = gameState.answers.get(checkedIndex).equals(gameState.correctAnswer);
+        gameState.rounds.add(isWon ? GameState.GameResult.WON : GameState.GameResult.LOST);
+
         AlertDialog gameDone;
-
         gameDone = new AlertDialog.Builder(this)
-                                  .setView(getGameScore(answers.get(checkedIndex).equals(correctAnswer)))
+                                  .setView(getGameScore())
                                   .create();
-
         gameDone.show();
         gameMode = GameMode.FINISHED;
     }
@@ -63,7 +64,7 @@ public class Game1Activity extends Activity {
 
     private int getCheckedIndex() {
         LinearLayout answersLayout = findViewById(R.id.game_answers);
-        for(int i=0; i<answers.size(); i++) {
+        for(int i=0; i<gameState.answers.size(); i++) {
             CheckBox checkBox = answersLayout.getChildAt(i).findViewById(R.id.checkBox);
             if (checkBox.isChecked()) {
                 return i;
@@ -74,28 +75,29 @@ public class Game1Activity extends Activity {
     }
 
     private void doSetupGame() {
-        answers.clear();
-        correctAnswer = new Answer( Math.round(Math.random() * 12), 0);
-        answers.add(correctAnswer);
-        while (answers.size() < 3) {
+        gameState = new GameState();
+        gameState.answers.clear();
+        gameState.correctAnswer = new Answer( Math.round(Math.random() * 12), 0);
+        gameState.answers.add(gameState.correctAnswer);
+        while (gameState.answers.size() < 3) {
             Answer alternativeAnswer = new Answer(Math.round(Math.random() * 12), 0);
-            if ( !answers.contains(alternativeAnswer) ) {
-                answers.add(alternativeAnswer);
+            if ( !gameState.answers.contains(alternativeAnswer) ) {
+                gameState.answers.add(alternativeAnswer);
             }
         }
-        Collections.shuffle(answers);
+        Collections.shuffle(gameState.answers);
         gameMode = GameMode.RUNNING;
     }
 
     private void doDrawGame() {
         View hour_hand = findViewById(R.id.game1_hour);
-        hour_hand.setRotation(correctAnswer.getHourAngle());
+        hour_hand.setRotation(gameState.correctAnswer.getHourAngle());
 
         LinearLayout answersLayout = findViewById(R.id.game_answers);
-        for(int i=0; i<answers.size(); i++) {
+        for(int i=0; i<gameState.answers.size(); i++) {
             ConstraintLayout answerLayout = (ConstraintLayout) answersLayout.getChildAt(i);
             CheckBox checkbox = answerLayout.findViewById(R.id.checkBox);
-            checkbox.setText(answers.get(i).toString());
+            checkbox.setText(gameState.answers.get(i).toString());
             checkbox.setOnCheckedChangeListener( (compoundButton, checked) -> {
                 if (checked) {
                     uncheckAllApartFrom(compoundButton);
@@ -106,7 +108,7 @@ public class Game1Activity extends Activity {
 
     private void uncheckAllApartFrom(CompoundButton compoundButton) {
         LinearLayout answersLayout = findViewById(R.id.game_answers);
-        for(int i=0; i<answers.size(); i++) {
+        for(int i=0; i<gameState.answers.size(); i++) {
             CheckBox checkBox = answersLayout.getChildAt(i).findViewById(R.id.checkBox);
             if (!checkBox.equals(compoundButton)) {
                 checkBox.setChecked(false);
@@ -116,27 +118,28 @@ public class Game1Activity extends Activity {
 
 
 
-    private View getGameScore(boolean isRoundCorrect) {
+    private View getGameScore() {
         View scoreLayout = View.inflate(this, R.layout.game1_score, null);
 
         Arrays.asList(R.id.duckOk, R.id.duckFail, R.id.catFail, R.id.catOk, R.id.bananaOk, R.id.bananaFail, R.id.cowOk, R.id.cowFail).forEach((id) -> {
             scoreLayout.findViewById(id).setVisibility(View.INVISIBLE);
         });
 
-        if (finishedRounds < 1) {
-            scoreLayout.findViewById(isRoundCorrect ? R.id.duckOk : R.id.duckFail).setVisibility(View.VISIBLE);
+        if (gameState.isRoundPlayed(1)) {
+            scoreLayout.findViewById(gameState.isRoundWon(1) ? R.id.duckOk : R.id.duckFail).setVisibility(View.VISIBLE);
         }
-        if (finishedRounds < 2) {
-            scoreLayout.findViewById(isRoundCorrect ? R.id.catOk : R.id.catFail).setVisibility(View.VISIBLE);
+        if (gameState.isRoundPlayed(2)) {
+            scoreLayout.findViewById(gameState.isRoundWon(2) ? R.id.catOk : R.id.catFail).setVisibility(View.VISIBLE);
         }
-        if (finishedRounds < 3) {
-            scoreLayout.findViewById(isRoundCorrect ? R.id.bananaOk : R.id.bananaFail).setVisibility(View.VISIBLE);
+        if (gameState.isRoundPlayed(3)) {
+            scoreLayout.findViewById(gameState.isRoundWon(3) ? R.id.bananaOk : R.id.bananaFail).setVisibility(View.VISIBLE);
         }
-        if (finishedRounds < 4) {
-            scoreLayout.findViewById(isRoundCorrect ? R.id.cowOk : R.id.cowFail).setVisibility(View.VISIBLE);
+        if (gameState.isRoundPlayed(4)) {
+            scoreLayout.findViewById(gameState.isRoundWon(4) ? R.id.cowOk : R.id.cowFail).setVisibility(View.VISIBLE);
         }
 
-        scoreLayout.findViewById( !isRoundCorrect ? R.id.correct : R.id.incorrect).setVisibility(View.INVISIBLE);
+        GameState.GameResult lastRound = gameState.rounds.get(gameState.rounds.size() - 1);
+        scoreLayout.findViewById( !GameState.GameResult.WON.equals(lastRound) ? R.id.correct : R.id.incorrect).setVisibility(View.INVISIBLE);
 
         return scoreLayout;
     }
