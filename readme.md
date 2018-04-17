@@ -21,7 +21,7 @@ Ett spel för småbarn som vill lära sig klockan.
 * Spela upp tiden när man trycker på play
     * ~~Spela upp hela klockslag~~
     * Spela upp kvartar och halvtimmar.
-* Spara state mellan spelningarna
+* ~~Spara state mellan spelningarna~~
 * Visa state i menyn
 * Minst 2 spelnivåer
 

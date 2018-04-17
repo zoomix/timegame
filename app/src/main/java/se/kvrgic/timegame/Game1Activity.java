@@ -21,14 +21,14 @@ import java.util.LinkedList;
 import java.util.List;
 
 import se.kvrgic.timegame.data.Answer;
-import se.kvrgic.timegame.data.GameMode;
+import se.kvrgic.timegame.data.GameState.GameMode;
 import se.kvrgic.timegame.data.GameState;
 
 public class Game1Activity extends Activity {
 
     public static final String TAG = "Game1Activity";
+    public static final String GAMESTORE = "score_game1";
 
-    public static GameMode gameMode = GameMode.FINISHED;
     public static GameState gameState = null;
     TextToSpeech tts = null;
 
@@ -37,7 +37,14 @@ public class Game1Activity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game1);
         tts = new TextToSpeech(getApplicationContext(), (status) -> { });
-        if(gameMode.equals(GameMode.FINISHED)) {
+        if (gameState == null) {
+            gameState = GameState.getStoredState(getSharedPreferences(GAMESTORE, MODE_PRIVATE));
+        }
+        if(gameState.gameMode.equals(GameMode.FINISHED)) {
+            gameState = new GameState();
+            gameState.gameMode = GameMode.NEXTROUND;
+        }
+        if(gameState.gameMode.equals(GameMode.NEXTROUND)) {
             doSetupGame();
         }
         doDrawGame();
@@ -48,13 +55,16 @@ public class Game1Activity extends Activity {
         tts.speak(whatToSay, TextToSpeech.QUEUE_FLUSH, null, "" + whatToSay.hashCode());
     }
 
-    public void onPause(){
+    public void onPause() {
         if(tts !=null) {
             tts.stop();
             tts.shutdown();
         }
+        gameState.storeState(getSharedPreferences(GAMESTORE, MODE_PRIVATE));
         super.onPause();
     }
+
+
 
     public void doAcceptAnswer(View view) {
         Log.d(TAG, "doAcceptAnswer: ");
@@ -64,7 +74,7 @@ public class Game1Activity extends Activity {
             return;
         }
 
-        gameMode = GameMode.PAUSED;
+        gameState.gameMode = GameMode.PAUSED;
 
         boolean isWon = gameState.answers.get(checkedIndex).equals(gameState.correctAnswer);
         gameState.rounds.add(isWon ? GameState.GameResult.WON : GameState.GameResult.LOST);
@@ -76,7 +86,7 @@ public class Game1Activity extends Activity {
                                   .setPositiveButton("Win", (dialogInterface, i) -> { doAnswerAccepted(); })
                                   .create();
         gameDone.show();
-        gameMode = GameMode.FINISHED;
+        gameState.gameMode = GameMode.NEXTROUND;
     }
 
     private void doAnswerAccepted() {
@@ -85,6 +95,7 @@ public class Game1Activity extends Activity {
             Intent menuActivityIntent = new Intent(this, MenuActivity.class);
             menuActivityIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(menuActivityIntent);
+            gameState.gameMode = GameMode.FINISHED;
         } else {
             doSetupGame();
             doDrawGame();
@@ -105,9 +116,6 @@ public class Game1Activity extends Activity {
     }
 
     private void doSetupGame() {
-        if (gameState == null) {
-            gameState = new GameState();
-        }
         gameState.answers.clear();
         gameState.correctAnswer = new Answer( Math.round(Math.random() * 12), 0);
         gameState.answers.add(gameState.correctAnswer);
@@ -119,7 +127,8 @@ public class Game1Activity extends Activity {
         }
         Collections.shuffle(gameState.answers);
         uncheckAllApartFrom(null);
-        gameMode = GameMode.RUNNING;
+        gameState.storeState(getSharedPreferences(GAMESTORE, MODE_PRIVATE));
+        gameState.gameMode = GameMode.RUNNING;
     }
 
     private void doDrawGame() {
