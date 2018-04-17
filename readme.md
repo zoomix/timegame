@@ -13,12 +13,14 @@ Ett spel för småbarn som vill lära sig klockan.
 * Spara settings på enheten
 
 ### Info screens
-* Splash view
+* ~~Splash view~~
 * Spelregler (som overlay första gången man spelar?)
-* Information om utvecklaren
+* ~~Information om utvecklaren~~
 
 ### Spelet funkar
 * Spela upp tiden när man trycker på play
+    * ~~Spela upp hela klockslag~~
+    * Spela upp kvartar och halvtimmar.
 * Spara state mellan spelningarna
 * Visa state i menyn
 * Minst 2 spelnivåer

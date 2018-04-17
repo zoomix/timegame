@@ -5,4 +5,7 @@
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="play_button">▶</string>
+    <string name="about_time_game">Time Game</string>
+    <string name="about_body">This app and the republic for which it stands is owned by none and all. Do with it as you please.\n\nThe Swedish Looking Dude is a wholly owned talentless subsidiary of The Swedish Looking Gang.</string>
+    <string name="about_copyright">©2018 The Swedish Looking Dude</string>
 </resources>

@@ -21,4 +21,8 @@ public class MenuActivity extends Activity {
     public void doHardGame(View view) {
 
     }
+
+    public void doInfo(View view) {
+        startActivity(new Intent(this, InfoActivity.class));
+    }
 }
