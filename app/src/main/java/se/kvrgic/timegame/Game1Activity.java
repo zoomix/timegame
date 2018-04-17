@@ -3,11 +3,13 @@ package se.kvrgic.timegame;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.speech.tts.TextToSpeech;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.LinearLayout;
@@ -28,16 +30,30 @@ public class Game1Activity extends Activity {
 
     public static GameMode gameMode = GameMode.FINISHED;
     public static GameState gameState = null;
+    TextToSpeech tts = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game1);
-
+        tts = new TextToSpeech(getApplicationContext(), (status) -> { });
         if(gameMode.equals(GameMode.FINISHED)) {
             doSetupGame();
         }
         doDrawGame();
+    }
+
+    public void doSpeak(View view) {
+        String whatToSay = ((Answer)view.getTag()).getWhatToSay();
+        tts.speak(whatToSay, TextToSpeech.QUEUE_FLUSH, null, "" + whatToSay.hashCode());
+    }
+
+    public void onPause(){
+        if(tts !=null) {
+            tts.stop();
+            tts.shutdown();
+        }
+        super.onPause();
     }
 
     public void doAcceptAnswer(View view) {
@@ -120,6 +136,9 @@ public class Game1Activity extends Activity {
                     uncheckAllApartFrom(compoundButton);
                 }
             });
+
+            Button playButton = answerLayout.findViewById(R.id.playButton);
+            playButton.setTag(gameState.answers.get(i));
         }
     }
 

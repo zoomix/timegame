@@ -29,4 +29,9 @@ public class Answer {
         Answer other = (Answer)o;
         return hour == other.hour && minute == other.minute;
     }
+
+    public String getWhatToSay() {
+        return "Klockan " + hour;
+    }
+
 }
