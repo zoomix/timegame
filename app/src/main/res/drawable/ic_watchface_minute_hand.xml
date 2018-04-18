@@ -6,10 +6,10 @@
   <group>
     <clip-path android:pathData="M0,0h900v900h-900z M 0,0"/>
     <path
-        android:pathData=" M 432.414 450 L 413.141 288.951 L 450 164 L 486.859 288.951 L 467.586 450 L 432.414 450 Z "
+        android:pathData=" M 425.446 450 L 398.535 225.133 L 450 50.668 L 501.465 225.133 L 474.554 450 L 425.446 450 Z "
         android:fillColor="#000000"/>
     <path
-        android:pathData=" M 437.958 443.48 L 420.254 290.079 L 450 189.124 L 479.746 290.079 L 462.042 443.48 L 437.958 443.48 Z "
+        android:pathData=" M 433.186 440.896 L 408.466 226.708 L 450 85.748 L 491.534 226.708 L 466.814 440.896 L 433.186 440.896 Z "
         android:fillColor="#79C3D9"/>
   </group>
 </vector>
