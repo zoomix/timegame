@@ -28,8 +28,8 @@ Ett spel för småbarn som vill lära sig klockan.
 *? Glada/ledsna ljud när man svarar rätt/fel
 
 ### Spelet ska innehålla grafik som inte behöver vara rörlig. Ex frågesport applikation med grafik. 
-* Lägg till minutvisaren
-* Snygga till klockan
+* ~~Lägg till minutvisaren~~
+* ~~Snygga till klockan~~
 * Skapa animationer
 * Snygga till menyn
 * Animera visarna
