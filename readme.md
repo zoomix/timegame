@@ -5,6 +5,7 @@ Ett spel för småbarn som vill lära sig klockan.
 ## Att göra
 
 ### Egen skapad Ikon (ej den som är default)
+* ~~Egen ikon~~
 
 ### Musik i bakgrunden- användaren ska kunna välja att stänga av, och sätta på musiken
 * Hitta musik
@@ -24,6 +25,7 @@ Ett spel för småbarn som vill lära sig klockan.
 * ~~Spara state mellan spelningarna~~
 * Visa state i menyn
 * Minst 2 spelnivåer
+*? Glada/ledsna ljud när man svarar rätt/fel
 
 ### Spelet ska innehålla grafik som inte behöver vara rörlig. Ex frågesport applikation med grafik. 
 * Lägg till minutvisaren
