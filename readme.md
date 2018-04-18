@@ -8,8 +8,8 @@ Ett spel för småbarn som vill lära sig klockan.
 * ~~Egen ikon~~
 
 ### Musik i bakgrunden- användaren ska kunna välja att stänga av, och sätta på musiken
-* Hitta musik
-* Spela vid uppstart
+* ~~Hitta musik~~
+* ~~Spela vid uppstart~~
 * Settings-meny (bara stänga av?)
 * Spara settings på enheten
 
