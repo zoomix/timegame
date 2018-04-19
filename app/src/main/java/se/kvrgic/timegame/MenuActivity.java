@@ -2,10 +2,13 @@ package se.kvrgic.timegame;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.Switch;
 
 public class MenuActivity extends Activity {
 
@@ -18,9 +21,12 @@ public class MenuActivity extends Activity {
 
         mediaPlayer = MediaPlayer.create(this, R.raw.komiku_ending);
         mediaPlayer.setLooping(true);
-        mediaPlayer.start();
+        boolean isMusicEnabled = isMusicEnabled();
+        if (isMusicEnabled) {
+            mediaPlayer.start();
+        }
+        ((Switch)findViewById(R.id.menu_music)).setChecked(isMusicEnabled);
     }
-
 
     public void onStop() {
         super.onStop();
@@ -29,7 +35,9 @@ public class MenuActivity extends Activity {
 
     public void onRestart() {
         super.onRestart();
-        mediaPlayer.start();
+        if (isMusicEnabled()) {
+            mediaPlayer.start();
+        }
     }
 
     public void doEasyGame(View view) {
@@ -42,5 +50,27 @@ public class MenuActivity extends Activity {
 
     public void doInfo(View view) {
         startActivity(new Intent(this, InfoActivity.class));
+    }
+
+    public void doMusicToggled(View view) {
+        boolean isMusicEnabled = ((Switch)view).isChecked();
+        setMusicEnabled(isMusicEnabled);
+
+        if (isMusicEnabled) {
+            mediaPlayer.start();
+        } else {
+            mediaPlayer.pause();
+        }
+    }
+
+
+    private boolean isMusicEnabled() {
+        return getSharedPreferences("mainmenu", MODE_PRIVATE).getBoolean("musicenabled", true);
+    }
+
+    private void setMusicEnabled(boolean isMusicEnabled) {
+        SharedPreferences.Editor mainmenuEditor = getSharedPreferences("mainmenu", MODE_PRIVATE).edit();
+        mainmenuEditor.putBoolean("musicenabled", isMusicEnabled);
+        mainmenuEditor.apply();
     }
 }
