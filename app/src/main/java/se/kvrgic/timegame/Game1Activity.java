@@ -150,9 +150,7 @@ public class Game1Activity extends Activity {
                     uncheckAllApartFrom(compoundButton);
                 }
             });
-
-            Button playButton = answerLayout.findViewById(R.id.playButton);
-            playButton.setTag(gameState.answers.get(i));
+            checkbox.setTag(gameState.answers.get(i));
         }
     }
 

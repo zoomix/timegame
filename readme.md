@@ -26,7 +26,7 @@ Ett spel för småbarn som vill lära sig klockan.
 * ~~Visa state i menyn~~
 * Minst 2 spelnivåer
 *? Glada/ledsna ljud när man svarar rätt/fel
-* Skippa play-knapparna
+* ~~Skippa play-knapparna~~
 
 ### Spelet ska innehålla grafik som inte behöver vara rörlig. Ex frågesport applikation med grafik. 
 * ~~Lägg till minutvisaren~~
