@@ -19,6 +19,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Locale;
 
 import se.kvrgic.timegame.data.Answer;
 import se.kvrgic.timegame.data.GameState.GameMode;
@@ -37,7 +38,7 @@ public class Game1Activity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game1);
-        tts = new TextToSpeech(getApplicationContext(), (status) -> { });
+        tts = new TextToSpeech(getApplicationContext(), (status) -> tts.setLanguage(Locale.forLanguageTag("sv")) );
         if (gameState == null) {
             gameState = GameState.getStoredState(getSharedPreferences(GAMESTORE, MODE_PRIVATE));
         }
