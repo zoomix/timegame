@@ -28,6 +28,7 @@ public class Game1Activity extends Activity {
 
     public static final String TAG = "Game1Activity";
     public static final String GAMESTORE = "score_game1";
+    public static final String BESTGAMESTORE = "bestscore_game1";
 
     public static GameState gameState = null;
     TextToSpeech tts = null;
@@ -94,6 +95,10 @@ public class Game1Activity extends Activity {
         if(gameState.rounds.size() >= 4) {
             Intent menuActivityIntent = new Intent(this, MenuActivity.class);
             menuActivityIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            GameState bestGameState =  GameState.getStoredState(getSharedPreferences(BESTGAMESTORE, MODE_PRIVATE));
+            if (gameState.isBetterThan(bestGameState)) {
+                gameState.storeState(getSharedPreferences(BESTGAMESTORE, MODE_PRIVATE));
+            }
             startActivity(menuActivityIntent);
             gameState.gameMode = GameMode.FINISHED;
         } else {

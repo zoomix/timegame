@@ -4,11 +4,16 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.MediaPlayer;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Switch;
+
+import java.util.Arrays;
+
+import se.kvrgic.timegame.data.GameState;
 
 public class MenuActivity extends Activity {
 
@@ -26,6 +31,9 @@ public class MenuActivity extends Activity {
             mediaPlayer.start();
         }
         ((Switch)findViewById(R.id.menu_music)).setChecked(isMusicEnabled);
+
+        doLoadTopScores(R.id.layoutEasyScore, "bestscore_game1");
+        doLoadTopScores(R.id.layoutHardScore, "bestscore_game2");
     }
 
     public void onStop() {
@@ -39,6 +47,8 @@ public class MenuActivity extends Activity {
             mediaPlayer.start();
         }
     }
+
+
 
     public void doEasyGame(View view) {
         startActivity(new Intent(this, Game1Activity.class));
@@ -63,6 +73,31 @@ public class MenuActivity extends Activity {
         }
     }
 
+
+
+    private void doLoadTopScores(int layoutId, String sharedPrefName) {
+        ConstraintLayout scoreLayout = findViewById(layoutId);
+
+        GameState gameState = GameState.getStoredState(getSharedPreferences(sharedPrefName, MODE_PRIVATE));
+        Arrays.asList(R.id.duckOk, R.id.duckFail, R.id.catFail, R.id.catOk, R.id.bananaOk, R.id.bananaFail, R.id.cowOk, R.id.cowFail).forEach((id) -> {
+            scoreLayout.findViewById(id).setVisibility(View.INVISIBLE);
+        });
+
+        if (gameState.isRoundPlayed(1)) {
+            scoreLayout.findViewById(gameState.isRoundWon(1) ? R.id.duckOk : R.id.duckFail).setVisibility(View.VISIBLE);
+        }
+        if (gameState.isRoundPlayed(2)) {
+            scoreLayout.findViewById(gameState.isRoundWon(2) ? R.id.catOk : R.id.catFail).setVisibility(View.VISIBLE);
+        }
+        if (gameState.isRoundPlayed(3)) {
+            scoreLayout.findViewById(gameState.isRoundWon(3) ? R.id.bananaOk : R.id.bananaFail).setVisibility(View.VISIBLE);
+        }
+        if (gameState.isRoundPlayed(4)) {
+            scoreLayout.findViewById(gameState.isRoundWon(4) ? R.id.cowOk : R.id.cowFail).setVisibility(View.VISIBLE);
+        }
+        scoreLayout.removeView(scoreLayout.findViewById(R.id.correct));
+        scoreLayout.removeView(scoreLayout.findViewById(R.id.incorrect));
+    }
 
     private boolean isMusicEnabled() {
         return getSharedPreferences("mainmenu", MODE_PRIVATE).getBoolean("musicenabled", true);

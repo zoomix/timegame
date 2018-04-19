@@ -23,15 +23,16 @@ Ett spel för småbarn som vill lära sig klockan.
     * ~~Spela upp hela klockslag~~
     * Spela upp kvartar och halvtimmar.
 * ~~Spara state mellan spelningarna~~
-* Visa state i menyn
+* ~~Visa state i menyn~~
 * Minst 2 spelnivåer
 *? Glada/ledsna ljud när man svarar rätt/fel
+* Skippa play-knapparna
 
 ### Spelet ska innehålla grafik som inte behöver vara rörlig. Ex frågesport applikation med grafik. 
 * ~~Lägg till minutvisaren~~
 * ~~Snygga till klockan~~
 * Skapa animationer
-* Snygga till menyn
+* ~~Snygga till menyn~~
 * Animera visarna
 * Animera svars-alternativen (wipes kanske?)
 

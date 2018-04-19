@@ -14,6 +14,7 @@ public class GameState {
 
     public static final String TAG = "GameState";
 
+
     public static enum GameResult { WON, LOST }
     public static enum GameMode { RUNNING, PAUSED, NEXTROUND, FINISHED }
 
@@ -35,6 +36,12 @@ public class GameState {
 
     public boolean isRoundWon(int round) {
         return GameResult.WON.equals( rounds.get(round - 1) );
+    }
+
+    public boolean isBetterThan(GameState otherGameState) {
+        long myWon    = rounds               .stream().filter(gameResult -> {return GameResult.WON.equals(gameResult);}).count();
+        long otherWon = otherGameState.rounds.stream().filter(gameResult -> {return GameResult.WON.equals(gameResult);}).count();
+        return myWon > otherWon;
     }
 
     public void storeState(SharedPreferences sharedPreferences) {

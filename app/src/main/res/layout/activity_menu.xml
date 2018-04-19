@@ -6,37 +6,75 @@
     android:layout_height="match_parent"
     tools:context="se.kvrgic.timegame.MenuActivity">
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/layoutEasy"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:onClick="doEasyGame"
-        android:text="Easy"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/answer_border"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/layoutHard">
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="hard"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button" />
+        <include
+            android:id="@+id/layoutEasyScore"
+            layout="@layout/game1_score"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="wrap_content"
+        <Button
+            android:id="@+id/button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="doEasyGame"
+            android:text="Easy"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layoutHard"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:onClick="doInfo"
-        android:text="Info"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button2" />
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/answer_border"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/layoutInfo">
+
+        <include
+            android:id="@+id/layoutHardScore"
+            layout="@layout/game1_score"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="hard"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layoutInfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/answer_border"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="doInfo"
+            android:text="Info"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button2" />
+
+    </LinearLayout>
 
     <Switch
         android:id="@+id/menu_music"
@@ -46,6 +84,7 @@
         android:layout_marginTop="8dp"
         android:background="@drawable/answer_border"
         android:onClick="doMusicToggled"
+        android:padding="8dp"
         android:text="🎶"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
