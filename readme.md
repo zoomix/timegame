@@ -19,9 +19,9 @@ Ett spel för småbarn som vill lära sig klockan.
 * ~~Information om utvecklaren~~
 
 ### Spelet funkar
-* Spela upp tiden när man trycker på play
+* Spela upp tiden när man trycker på checkboxen
     * ~~Spela upp hela klockslag~~
-    * Spela upp kvartar och halvtimmar.
+    * ~~Spela upp kvartar och halvtimmar.~~
 * ~~Spara state mellan spelningarna~~
 * ~~Visa state i menyn~~
 * Minst 2 spelnivåer
