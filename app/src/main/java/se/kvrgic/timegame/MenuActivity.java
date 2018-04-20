@@ -55,7 +55,7 @@ public class MenuActivity extends Activity {
     }
 
     public void doHardGame(View view) {
-
+        startActivity(new Intent(this, Game2Activity.class));
     }
 
     public void doInfo(View view) {

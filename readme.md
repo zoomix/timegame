@@ -19,12 +19,12 @@ Ett spel för småbarn som vill lära sig klockan.
 * ~~Information om utvecklaren~~
 
 ### Spelet funkar
-* Spela upp tiden när man trycker på checkboxen
+* ~~Spela upp tiden när man trycker på checkboxen~~
     * ~~Spela upp hela klockslag~~
     * ~~Spela upp kvartar och halvtimmar.~~
 * ~~Spara state mellan spelningarna~~
 * ~~Visa state i menyn~~
-* Minst 2 spelnivåer
+* ~~Minst 2 spelnivåer~
 *? Glada/ledsna ljud när man svarar rätt/fel
 * ~~Skippa play-knapparna~~
 
