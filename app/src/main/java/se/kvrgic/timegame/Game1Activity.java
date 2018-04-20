@@ -72,7 +72,7 @@ public class Game1Activity extends Activity {
         Log.d(TAG, "doAcceptAnswer: ");
         int checkedIndex = getCheckedIndex();
         if (checkedIndex == -1) {
-            Toast.makeText(this, "Du  valde inget alternativ", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Du valde inget alternativ", Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -85,7 +85,7 @@ public class Game1Activity extends Activity {
         gameDone = new AlertDialog.Builder(this)
                                   .setView(getGameScore())
                                   .setCancelable(false)
-                                  .setPositiveButton("Win", (dialogInterface, i) -> { doAnswerAccepted(); })
+                                  .setPositiveButton(isWon ? "Win" : "Ojdå", (dialogInterface, i) -> { doAnswerAccepted(); })
                                   .create();
         gameDone.show();
         gameState.gameMode = GameMode.NEXTROUND;
