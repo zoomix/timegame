@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">timegame</string>
 
+    <string name="ok">OK</string>
     <string name="title_activity_menu">MenuActivity</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
@@ -8,4 +9,10 @@
     <string name="about_time_game">Time Game</string>
     <string name="about_body">This app and the republic for which it stands is owned by none and all. Do with it as you please.\n\nThe Swedish Looking Dude is a wholly owned talentless subsidiary of The Swedish Looking Gang.</string>
     <string name="about_copyright">©2018 The Swedish Looking Dude</string>
+    <string name="menu_help_header">Hjälp</string>
+    <string name="menu_help">Här väljer man svårighetsgrad på spelet. Det finns två nivåer - enkel och svår. Enkel har med heltimmar och svår har både heltimmar, halvtimmar och kvartar. Ovanför varje svårighetsgrad ser man sitt bästa resultat någonsin.</string>
+    <string name="game1_help_header">Hjälp</string>
+    <string name="game1_help">Den stora klockan ställer in sig och du får tre alternativ. Om du markerar ett alternativ får du dess klockslag uppläst. När du markerat klart klickar du på knappen vidare. Efter varje omgång får du se om du svarade rätt eller fel. Efter 4 omgångar är spelet slut.</string>
+    <string name="game2_help_header">Hjälp</string>
+    <string name="game2_help">Den stora klockan ställer in sig och du får tre alternativ. Om du markerar ett alternativ får du dess klockslag uppläst. När du markerat klart klickar du på knappen vidare. Efter varje omgång får du se om du svarade rätt eller fel. Efter 4 omgångar är spelet slut.</string>
 </resources>

@@ -1,6 +1,7 @@
 package se.kvrgic.timegame;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.MediaPlayer;
@@ -71,6 +72,15 @@ public class MenuActivity extends Activity {
         } else {
             mediaPlayer.pause();
         }
+    }
+
+    public void doShowHelp(View view) {
+        new AlertDialog.Builder(this)
+                .setTitle(R.string.menu_help_header)
+                .setMessage(R.string.menu_help)
+                .setPositiveButton(R.string.ok, (dialogInterface, i) -> {} )
+                .create()
+                .show();
     }
 
 

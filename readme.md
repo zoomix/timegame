@@ -14,9 +14,10 @@ Ett spel för småbarn som vill lära sig klockan.
 * ~~Spara settings på enheten~~
 
 ### Info screens
-* ~~Splash view~~
-* Spelregler (som overlay första gången man spelar?)
+* Splash view
+* ~~Spelregler (som overlay första gången man spelar?)~~
 * ~~Information om utvecklaren~~
+* Lägg till en logga på förstaskärmen
 
 ### Spelet funkar
 * ~~Spela upp tiden när man trycker på checkboxen~~
@@ -24,8 +25,8 @@ Ett spel för småbarn som vill lära sig klockan.
     * ~~Spela upp kvartar och halvtimmar.~~
 * ~~Spara state mellan spelningarna~~
 * ~~Visa state i menyn~~
-* ~~Minst 2 spelnivåer~
-*? Glada/ledsna ljud när man svarar rätt/fel
+* ~~Minst 2 spelnivåer~~
+* ?Glada/ledsna ljud när man svarar rätt/fel
 * ~~Skippa play-knapparna~~
 
 ### Spelet ska innehålla grafik som inte behöver vara rörlig. Ex frågesport applikation med grafik. 

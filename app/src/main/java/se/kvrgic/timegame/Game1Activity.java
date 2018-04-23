@@ -66,6 +66,15 @@ public class Game1Activity extends Activity {
         super.onPause();
     }
 
+    public void doShowHelp(View view) {
+        new AlertDialog.Builder(this)
+                .setTitle(R.string.game1_help_header)
+                .setMessage(R.string.game1_help)
+                .setPositiveButton(R.string.ok, (dialogInterface, i) -> {} )
+                .create()
+                .show();
+    }
+
 
 
     public void doAcceptAnswer(View view) {
