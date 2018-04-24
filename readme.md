@@ -14,10 +14,10 @@ Ett spel för småbarn som vill lära sig klockan.
 * ~~Spara settings på enheten~~
 
 ### Info screens
-* Splash view
+* ~~Splash view~~
 * ~~Spelregler (som overlay första gången man spelar?)~~
 * ~~Information om utvecklaren~~
-* Lägg till en logga på förstaskärmen
+* ~~Lägg till en logga på förstaskärmen~~
 
 ### Spelet funkar
 * ~~Spela upp tiden när man trycker på checkboxen~~

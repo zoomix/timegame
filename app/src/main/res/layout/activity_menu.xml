@@ -6,6 +6,15 @@
     android:layout_height="match_parent"
     tools:context="se.kvrgic.timegame.MenuActivity">
 
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:scaleType="center"
+        android:src="@drawable/timegame_wordart"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <LinearLayout
         android:id="@+id/layoutEasy"
         android:layout_width="match_parent"
