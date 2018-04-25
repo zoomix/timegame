@@ -19,6 +19,12 @@ public class AnswerUnitTest {
     }
 
     @Test
+    public void whatToSay_kl12() throws Exception {
+        Answer answer = new Answer(0, 0);
+        assertEquals("Klockan 12", answer.getWhatToSay());
+    }
+
+    @Test
     public void whatToSay_kvartOver3() throws Exception {
         Answer answer = new Answer(3, 15);
         assertEquals("Kvart över 3", answer.getWhatToSay());

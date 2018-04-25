@@ -31,7 +31,7 @@ public class Answer {
     }
 
     public String getWhatToSay() {
-        if (minute == 0)  return "Klockan " + hour;
+        if (minute == 0)  return "Klockan " + ((hour == 0) ? 12 : hour);
         if (minute == 15) return "Kvart över " + hour;
         if (minute == 30) return "Halv " + (hour + 1);
         if (minute == 45) return "Kvart i " + (hour + 1);
