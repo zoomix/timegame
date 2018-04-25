@@ -94,7 +94,7 @@ public class Game1Activity extends Activity {
         gameDone = new AlertDialog.Builder(this)
                                   .setView(getGameScore())
                                   .setCancelable(false)
-                                  .setPositiveButton(isWon ? "Win" : "Ojdå", (dialogInterface, i) -> { doAnswerAccepted(); })
+                                  .setPositiveButton(isWon ? "Rätt" : "Ojdå", (dialogInterface, i) -> { doAnswerAccepted(); })
                                   .create();
         gameDone.show();
         gameState.gameMode = GameMode.NEXTROUND;
