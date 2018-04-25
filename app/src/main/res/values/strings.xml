@@ -15,4 +15,7 @@
     <string name="game1_help">Den stora klockan ställer in sig och du får tre alternativ. Om du markerar ett alternativ får du dess klockslag uppläst. När du markerat klart klickar du på knappen vidare. Efter varje omgång får du se om du svarade rätt eller fel. Efter 4 omgångar är spelet slut.</string>
     <string name="game2_help_header">Hjälp</string>
     <string name="game2_help">Den stora klockan ställer in sig och du får tre alternativ. Om du markerar ett alternativ får du dess klockslag uppläst. När du markerat klart klickar du på knappen vidare. Efter varje omgång får du se om du svarade rätt eller fel. Efter 4 omgångar är spelet slut.</string>
+    <string name="mainmenu_easy">⭐️ Lätt ⭐️</string>
+    <string name="mainmenu_hard">⭐⭐⭐ Svår ⭐⭐⭐️</string>
+    <string name="mainmenu_info">Om</string>
 </resources>
