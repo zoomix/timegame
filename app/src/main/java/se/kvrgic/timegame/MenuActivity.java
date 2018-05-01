@@ -6,10 +6,10 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.support.constraint.ConstraintLayout;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Switch;
 
 import java.util.Arrays;
@@ -35,6 +35,10 @@ public class MenuActivity extends Activity {
 
         doLoadTopScores(R.id.layoutEasyScore, "bestscore_game1");
         doLoadTopScores(R.id.layoutHardScore, "bestscore_game2");
+
+        doAnimateView(R.id.layoutEasy, 0);
+        doAnimateView(R.id.layoutHard, 150);
+        doAnimateView(R.id.layoutInfo, 300);
     }
 
     public void onStop() {
@@ -117,5 +121,11 @@ public class MenuActivity extends Activity {
         SharedPreferences.Editor mainmenuEditor = getSharedPreferences("mainmenu", MODE_PRIVATE).edit();
         mainmenuEditor.putBoolean("musicenabled", isMusicEnabled);
         mainmenuEditor.apply();
+    }
+
+    private void doAnimateView(int viewId, int offset) {
+        Animation mainMenu = AnimationUtils.loadAnimation(this, R.anim.mainmenu_anim);
+        mainMenu.setStartOffset(offset);
+        findViewById(viewId).startAnimation(mainMenu);
     }
 }
