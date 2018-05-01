@@ -9,6 +9,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -165,6 +167,11 @@ public class Game2Activity extends Activity {
             });
             checkbox.setTag(gameState.answers.get(i));
         }
+
+        doAnimateWatchface(R.id.game1_clock);
+        doAnimateWatchhands(R.id.game1_hour);
+        doAnimateWatchhands(R.id.game1_minute);
+
     }
 
     private void uncheckAllApartFrom(CompoundButton compoundButton) {
@@ -203,5 +210,18 @@ public class Game2Activity extends Activity {
         scoreLayout.findViewById( !GameState.GameResult.WON.equals(lastRound) ? R.id.correct : R.id.incorrect).setVisibility(View.INVISIBLE);
 
         return scoreLayout;
+    }
+
+
+    private void doAnimateWatchface(int viewId) {
+        Animation watchface = AnimationUtils.loadAnimation(this, R.anim.game_watchface);
+        watchface.setStartOffset(0);
+        findViewById(viewId).startAnimation(watchface);
+    }
+
+    private void doAnimateWatchhands(int viewId) {
+        Animation watchhands = AnimationUtils.loadAnimation(this, R.anim.game_watchhands);
+        watchhands.setStartOffset(0);
+        findViewById(viewId).startAnimation(watchhands);
     }
 }

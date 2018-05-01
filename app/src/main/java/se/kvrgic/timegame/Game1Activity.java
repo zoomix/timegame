@@ -9,6 +9,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -150,6 +152,12 @@ public class Game1Activity extends Activity {
         View hour_hand = findViewById(R.id.game1_hour);
         hour_hand.setRotation(gameState.correctAnswer.getHourAngle());
 
+        doAnimateWatchface(R.id.game1_clock);
+
+        doAnimateWatchhands(R.id.game1_hour);
+        doAnimateWatchhands(R.id.game1_minute);
+
+
         LinearLayout answersLayout = findViewById(R.id.game_answers);
         for(int i=0; i<gameState.answers.size(); i++) {
             ConstraintLayout answerLayout = (ConstraintLayout) answersLayout.getChildAt(i);
@@ -200,5 +208,18 @@ public class Game1Activity extends Activity {
         scoreLayout.findViewById( !GameState.GameResult.WON.equals(lastRound) ? R.id.correct : R.id.incorrect).setVisibility(View.INVISIBLE);
 
         return scoreLayout;
+    }
+
+
+    private void doAnimateWatchface(int viewId) {
+        Animation watchface = AnimationUtils.loadAnimation(this, R.anim.game_watchface);
+        watchface.setStartOffset(0);
+        findViewById(viewId).startAnimation(watchface);
+    }
+
+    private void doAnimateWatchhands(int viewId) {
+        Animation watchhands = AnimationUtils.loadAnimation(this, R.anim.game_watchhands);
+        watchhands.setStartOffset(0);
+        findViewById(viewId).startAnimation(watchhands);
     }
 }
