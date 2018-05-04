@@ -1,5 +1,6 @@
 # TimeGame
 
+Swedish only for the time being. 
 Ett spel för småbarn som vill lära sig klockan.
 
 ## Att göra
@@ -32,9 +33,9 @@ Ett spel för småbarn som vill lära sig klockan.
 ### Spelet ska innehålla grafik som inte behöver vara rörlig. Ex frågesport applikation med grafik. 
 * ~~Lägg till minutvisaren~~
 * ~~Snygga till klockan~~
-* Skapa animationer
+* ~~Skapa animationer~~
 * ~~Snygga till menyn~~
-* Animera visarna
-* Animera svars-alternativen (wipes kanske?)
+* ~~Animera visarna~~
+* ~~Animera svars-alternativen (wipes kanske?)~~
 
 ### Rapport
